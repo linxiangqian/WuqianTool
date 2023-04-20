@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fun.wuqian</groupId>
-    <artifactId>WuqianTool</artifactId>
-    <name>WuqianTool</name>
+    <artifactId>wuqian-tool</artifactId>
+    <name>wuqian-tool</name>
     <!-- 1.1.1-SNAPSHOT -->
-    <version>1.1.2</version>
+    <version>1.1.3</version>
     <description>java常用的工具类(悟纤提供)</description>
     <url>https://github.com/linxiangqian/WuqianTool</url>
     <properties>
@@ -40,6 +40,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
