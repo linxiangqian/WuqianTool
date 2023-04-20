@@ -6,13 +6,43 @@
 
     <groupId>fun.wuqian</groupId>
     <artifactId>WuqianTool</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
+    <name>WuqianTool</name>
+    <!-- 1.1.1-SNAPSHOT -->
+    <version>1.1.2</version>
+    <description>java常用的工具类(悟纤提供)</description>
+    <url>https://github.com/linxiangqian/WuqianTool</url>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>4.13.2</junit.version>
     </properties>
+    <licenses>
+        <license>
+            <name>悟纤</name>
+            <url>https://mp.weixin.qq.com/s/d7nplVLhqaWoN_SuoBruWA</url>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/linxiangqian/WuqianTool</url>
+    </scm>
+    <developers>
+        <developer>
+            <name>悟纤</name>
+            <email>412887952@qq.com</email>
+            <organization>悟纤学院</organization>
+            <organizationUrl>https://github.com/linxiangqian/WuqianTool</organizationUrl>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+    </dependencies>
+
 
     <build>
         <plugins>
@@ -70,13 +100,26 @@
                 </executions>
             </plugin>
 
+
+            <!-- Maven 发布插件的配置应该包括禁用作为 Maven Super POM 一部分的发布配置文件，因为我们使用的是我们自己的配置文件，并指定部署目标以及我们的配置文件的release激活 -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-release-plugin</artifactId>-->
+<!--                <version>2.5.3</version>-->
+<!--                <configuration>-->
+<!--                    <autoVersionSubmodules>true</autoVersionSubmodules>-->
+<!--                    <useReleaseProfile>false</useReleaseProfile>-->
+<!--                    <releaseProfiles>release</releaseProfiles>-->
+<!--                    <goals>deploy</goals>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+
         </plugins>
     </build>
 
     <!-- 参考： https://central.sonatype.org/publish/publish-maven/#distribution-management-and-authentication
-        部署命令：
+        部署命令：如果您的版本是发布版本（不以 -SNAPSHOT 结尾）并且设置到位，您可以运行到 OSSRH 的部署和到中央存储库的自动发布
         （1）mvn clean deploy
-        （2）mvn clean deploy -P release
     -->
     <distributionManagement>
         <snapshotRepository>
