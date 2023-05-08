@@ -44,7 +44,7 @@ public class SimpleUtilTest {
        try {
            int i = 1/0;
        }catch (Exception e){
-           System.out.println(SimpleUtil.getExceptionMessage(e));
+           //System.out.println(SimpleUtil.getExceptionMessage(e));
        }
     }
 
