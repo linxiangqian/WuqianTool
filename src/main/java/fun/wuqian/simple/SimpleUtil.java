@@ -1,5 +1,8 @@
 package fun.wuqian.simple;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 /**
@@ -17,12 +20,34 @@ public class SimpleUtil {
      */
     public static boolean isNullOrEmpty(Object... objs) {
         for (Object obj : objs) {
-            if (obj == null || obj.toString().trim().isEmpty()) {
+            if (obj == null || obj.toString().trim().isEmpty() ) {
                 return true;
             }
         }
         return false;
     }
+
+
+    /**
+     * 是否Null or Empty.支持多个对象.
+     *
+     * @param objs
+     * @return 当所有的字段都不为null/empty的时候，才会返回true.
+     */
+    public static boolean isNotNullAndEmpty(Object... objs) {
+        int size = 0;
+        for (Object obj : objs) {
+            if (obj != null && !obj.toString().trim().isEmpty()  ) {
+                size++;
+            }
+        }
+        boolean flag = false;
+        if(size == objs.length){
+            return true;
+        }
+        return flag;
+    }
+
 
     /***
      * [0123456789]产生随机数
@@ -42,4 +67,63 @@ public class SimpleUtil {
         return sRand.toString();
     }
 
+
+    /**
+     * md5加密，32位加密方式.
+     *
+     * @param str
+     * @return
+     */
+    public static String md5(String str) {
+        return md5For32(str);
+    }
+
+
+    /**
+     * 对字符串进行 MD5 加密(32加密)
+     *
+     * @param str
+     *            要加密的字符串.
+     */
+    public static String md5For32(String str) {
+        char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };// 用来将字节转换成
+        // 16
+        // 进制表示的字符
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+            md5.update(str.getBytes("UTF8"));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
+        }
+        byte[] encodedValue = md5.digest();
+        int j = encodedValue.length;
+        char finalValue[] = new char[j * 2];
+        int k = 0;
+        for (int i = 0; i < j; i++) {
+            byte encoded = encodedValue[i];
+            finalValue[k++] = hexDigits[encoded >> 4 & 0xf];
+            finalValue[k++] = hexDigits[encoded & 0xf];
+        }
+        return new String(finalValue);
+    }
+
+
+    /**
+     * 获取详细的异常信息.
+     * @param e
+     * @return
+     */
+    public static String getExceptionMessage(Throwable e) {
+        StringBuffer myException = new StringBuffer((e.getClass().getName() + ":" + e.getMessage()) + "\n");
+        StackTraceElement[] strArr = e.getStackTrace();
+        for (StackTraceElement str : strArr) {
+            myException.append(("\t" + str.toString()) + "\n");
+        }
+        return myException.toString();
+    }
 }
