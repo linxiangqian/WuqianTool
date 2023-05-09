@@ -65,6 +65,29 @@ public class SimpleUtil {
         return b;
     }
 
+    /**
+     * 获取随机数[包括开始，包括结束.]. [startNumber,endNumber]
+     *
+     * @param startNumber  开始
+     * @param endNumber  结束
+     * @return 随机数
+     */
+    public static int rand(int startNumber, int endNumber) {
+        int rand = startNumber + new Random().nextInt(endNumber - startNumber +1);
+        return rand;
+    }
+
+    /**
+     * 获取随机数[包括开始，包括结束.]. [startNumber,endNumber]
+     *
+     * @param startNumber 开始
+     * @param endNumber 结束
+     * @return  随机数
+     */
+    public static long randLong(long startNumber, long endNumber) {
+        long rand = startNumber +  (long)(Math.random()*(endNumber-startNumber+1));
+        return rand;
+    }
 
     /***
      * [0123456789]产生随机数
