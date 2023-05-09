@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 常用的工具类
@@ -46,6 +47,22 @@ public class SimpleUtil {
             return true;
         }
         return flag;
+    }
+
+    /**
+     * 是否包等于某些数据，包含返回true.
+     */
+    public static  boolean isEqualsOr(String source, String... targets) {
+        boolean b = false;
+        if(source != null){
+            for (String str : targets) {
+                if (source.equals(str)) {
+                    b = true;
+                    break;
+                }
+            }
+        }
+        return b;
     }
 
 
@@ -112,6 +129,18 @@ public class SimpleUtil {
         return new String(finalValue);
     }
 
+
+    /**
+     * 休眠几秒.
+     * @param timeoutSecond
+     */
+    public static void sleep(long timeoutSecond) {
+        try {
+            TimeUnit.SECONDS.sleep(timeoutSecond);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * 获取详细的异常信息.

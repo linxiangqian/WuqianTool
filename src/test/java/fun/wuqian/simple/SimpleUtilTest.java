@@ -10,6 +10,13 @@ import org.junit.Test;
 public class SimpleUtilTest {
 
     @Test
+    public void testIsEqualsOr(){
+        Assert.assertEquals(false,SimpleUtil.isEqualsOr("prod","test"));
+        Assert.assertEquals(false,SimpleUtil.isEqualsOr("prod","test","dev"));
+        Assert.assertEquals(true,SimpleUtil.isEqualsOr("prod","test","prod"));
+    }
+
+    @Test
     public void testIsNotNullOrEmpty(){
         String str1 = "", str2 = "hi";
         Assert.assertEquals(false,SimpleUtil.isNotNullAndEmpty(str1,str2));
