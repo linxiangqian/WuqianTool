@@ -10,6 +10,18 @@ import org.junit.Test;
 public class SimpleUtilTest {
 
     @Test
+    public void testBirthday2Age(){
+        int age1 = SimpleUtil.birthday2Age("1988-11-29");
+        int age2 = SimpleUtil.birthday2Age("1988/11/29");
+        int age3 = SimpleUtil.birthday2Age("19881129");
+        int age4 = SimpleUtil.birthday2Age("1988.11.29");
+        System.out.println("SimpleUtilTest.testBirthday2Age->age1="+age1);
+        Assert.assertEquals(true,age1==age2);
+        Assert.assertEquals(true,age1==age3);
+        Assert.assertEquals(true,age1==age4);
+    }
+
+    @Test
     public void testIsEqualsOr(){
         Assert.assertEquals(false,SimpleUtil.isEqualsOr("prod","test"));
         Assert.assertEquals(false,SimpleUtil.isEqualsOr("prod","test","dev"));
@@ -20,12 +32,19 @@ public class SimpleUtilTest {
     public void testIsNotNullOrEmpty(){
         String str1 = "", str2 = "hi";
         Assert.assertEquals(false,SimpleUtil.isNotNullAndEmpty(str1,str2));
+        Assert.assertEquals(true,SimpleUtil.isNotNullAndEmptyAnyRtn(str1,str2));
 
         str1 = null;str2 = "hi";
         Assert.assertEquals(false,SimpleUtil.isNotNullAndEmpty(str1,str2));
+        Assert.assertEquals(true,SimpleUtil.isNotNullAndEmptyAnyRtn(str1,str2));
 
         str1 = "str1";str2 = "str2";
         Assert.assertEquals(true,SimpleUtil.isNotNullAndEmpty(str1,str2));
+        Assert.assertEquals(true,SimpleUtil.isNotNullAndEmptyAnyRtn(str1,str2));
+
+        str1 = null;str2 = null;
+        Assert.assertEquals(false,SimpleUtil.isNotNullAndEmpty(str1,str2));
+        Assert.assertEquals(false,SimpleUtil.isNotNullAndEmptyAnyRtn(str1,str2));
     }
 
     @Test

@@ -3,6 +3,9 @@ package fun.wuqian.simple;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -47,6 +50,22 @@ public class SimpleUtil {
             return true;
         }
         return flag;
+    }
+
+    /**
+     * 当其中有字段不为null或者空的情况下，就会返回true
+     * @param objs
+     * @return 当有一个字段不为null或者空的情况下，就会返回true.
+     */
+    public static boolean isNotNullAndEmptyAnyRtn(Object... objs) {
+        boolean b = false;
+        for (Object obj : objs) {
+            if ( obj != null && !obj.toString().trim().isEmpty() ) {
+                b = true;
+                break;
+            }
+        }
+        return b;
     }
 
     /**
@@ -177,5 +196,55 @@ public class SimpleUtil {
             myException.append(("\t" + str.toString()) + "\n");
         }
         return myException.toString();
+    }
+
+    /**
+     * 根据生日计算年龄.计算出来的是周岁
+     * @param birthday 生日,支持yyyyMMdd、yyyy-MM-dd，yyyy/MM/dd,yyyy.MM.dd
+     * @return
+     */
+    public static int birthday2Age(String birthday) {
+        birthday = birthday.replaceAll("-","").replace("/","").replace(".","");
+        return birthday2Age(birthday,"yyyyMMdd");
+    }
+
+    /**
+     * 根据生日计算年龄.计算出来的是周岁
+     *
+     * @param birthday:格式为
+     *            年-月-日，例如:2013-09-06
+     * @return 年龄
+     */
+    public static int birthday2Age(String birthday,String format) {
+        if (birthday == null) {
+            return 0;
+        } else {
+            SimpleDateFormat myFormatter = new SimpleDateFormat(format);
+            Date mydate = null;
+            try {
+                mydate = myFormatter.parse(birthday);
+                return birthday2Age(mydate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return 0;
+        }
+    }
+
+    /**
+     * 根据生日计算年龄.计算出来的是周岁
+     *
+     * @param birthdayDate 生日日期格式.
+     * @return 年龄
+     */
+    public static int birthday2Age(Date birthdayDate) {
+        if (birthdayDate == null) {
+            return 0;
+        } else {
+            java.util.Date date = new Date();
+            java.util.Date mydate = birthdayDate;
+            long day = (date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000) + 1;
+            return (int) (day / 365f);
+        }
     }
 }
