@@ -3,9 +3,15 @@
 
 -----------------------------
 ## 更新记录
+### v1.1.9
+新增类SimpleDateRangeUtil。
+
+-----------------------------
+## 更新记录
 ### v1.1.8
 SimpleUitl新增如下方法：
 - isNotNullAndEmptyAnyRtn
+线程池处理类：SimpleThreadPool、DefaultThreadFactory、ThreadHandler
 
 -----------------------------
 ## 更新记录
