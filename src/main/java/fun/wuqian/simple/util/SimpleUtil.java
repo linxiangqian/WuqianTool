@@ -1,4 +1,4 @@
-package fun.wuqian.simple;
+package fun.wuqian.simple.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -214,6 +214,7 @@ public class SimpleUtil {
      * @param birthday:格式为
      *            年-月-日，例如:2013-09-06
      * @return 年龄
+     *
      */
     public static int birthday2Age(String birthday,String format) {
         if (birthday == null) {

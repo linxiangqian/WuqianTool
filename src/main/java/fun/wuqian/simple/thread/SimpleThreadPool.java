@@ -98,7 +98,7 @@ public class SimpleThreadPool {
 
     /**
      * QueueSize(队列中的线程数)
-     * @return
+     * @return 队列中的线程数
      */
     public long getQueueCount(){
         return this.executorService.getQueue().size();

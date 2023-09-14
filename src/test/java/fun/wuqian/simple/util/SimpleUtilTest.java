@@ -1,5 +1,7 @@
-package fun.wuqian.simple;
+package fun.wuqian.simple.util;
 
+import fun.wuqian.simple.encode.SimpleAES_ECB_128;
+import fun.wuqian.simple.util.SimpleUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -74,5 +76,24 @@ public class SimpleUtilTest {
        }
     }
 
+
+    @Test
+    public void testAES(){
+        /*
+         * 此处使用AES-128-ECB加密模式，key需要为16位。
+         */
+        String cKey = "Y0GsnKNELsL0O0G0";
+        // 需要加密的字串
+        String cSrc = "BN:19999922";//BN:bnd-cpn
+//	     System.out.println(cSrc);
+        // 加密
+        String enString = SimpleAES_ECB_128.encrypt(cKey,cSrc);
+        System.out.println("加密后的字串是：" + enString);
+
+        // 解密
+        String DeString = SimpleAES_ECB_128.decrypt(cKey,enString);
+        System.out.println("解密后的字串是：" + DeString);
+        Assert.assertEquals(DeString,cSrc);
+    }
 
 }

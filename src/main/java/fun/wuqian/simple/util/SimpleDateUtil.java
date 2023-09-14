@@ -1,4 +1,4 @@
-package fun.wuqian.simple;
+package fun.wuqian.simple.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -59,18 +59,51 @@ public class SimpleDateUtil {
          * @return
          */
         public  static  Date getRelativeDate(int dayPlusOrMinus,int secondPlusOrMinus){
+            return getRelativeDate(0,0,dayPlusOrMinus,0,0,secondPlusOrMinus,false);
+        }
+
+        /**
+         * 基于当前的时间，获取相对的日期
+         * @param dayPlusOrMinus 如果是正数的话，就是之后的时间，如果是负数的话，那么就是之前的时间
+         * @param isCurrentEndDay 是否是当天结束时间，也就是设置为23:59:59
+         * @return
+         */
+        public  static  Date getRelativeDate(int dayPlusOrMinus,boolean isCurrentEndDay){
+            return getRelativeDate(0,0,dayPlusOrMinus,0,0,0,isCurrentEndDay);
+        }
+
+        /**
+         *
+         * @param yearPlusOrMinus   把日期往后增加year年.整数往后推,负数往前移动
+         * @param monthPlusOrMinus  把日期往后增加month月.整数往后推,负数往前移动
+         * @param dayPlusOrMinus  把日期往后增加day天.整数往后推,负数往前移动
+         * @param hourPlusOrMinus 把日期往后增加hour小时.整数往后推,负数往前移动
+         * @param minutePlusOrMinus  把日期往后增加minute小时.整数往后推,负数往前移动
+         * @param secondPlusOrMinus 把日期往后增加SECOND 秒.整数往后推,负数往前移动
+         * @param isCurrentEndDay 是否是当天结束时间，也就是设置为23:59:59
+         * @return
+         */
+        public  static  Date getRelativeDate(int yearPlusOrMinus,int monthPlusOrMinus,int dayPlusOrMinus,int hourPlusOrMinus,int minutePlusOrMinus,int secondPlusOrMinus,boolean isCurrentEndDay){
             // SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar c = new GregorianCalendar();
             Date date = new Date();
             //System.out.println("系统当前时："+df.format(date));
             c.setTime(date);//设置参数时间
+            c.add(Calendar.YEAR,yearPlusOrMinus);
+            c.add(Calendar.MONTH,monthPlusOrMinus);
             c.add(Calendar.DAY_OF_MONTH,dayPlusOrMinus);
+            c.add(Calendar.HOUR_OF_DAY, hourPlusOrMinus);
+            c.add(Calendar.MINUTE, minutePlusOrMinus);
             c.add(Calendar.SECOND,secondPlusOrMinus);//把日期往后增加SECOND 秒.整数往后推,负数往前移动
+            if(isCurrentEndDay){//是否是当天结束时间，也就是设置为23:59:59
+                c.set(Calendar.HOUR_OF_DAY, 23);
+                c.set(Calendar.MINUTE, 59);
+                c.set(Calendar.SECOND, 59);
+            }
             date = c.getTime(); //这个时间就是日期往后推一天的结果
             // String str = df.format(date);
             return date;
         }
-
 
         public static Date randomDate(int beginSecond){
             return SimpleDateUtil.randomDate( getRelativeDate(-beginSecond),new Date() );
