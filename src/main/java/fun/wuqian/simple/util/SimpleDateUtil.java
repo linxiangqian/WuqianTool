@@ -1,5 +1,6 @@
 package fun.wuqian.simple.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -146,6 +147,21 @@ public class SimpleDateUtil {
     public static String format(Date date,String format){
         SimpleDateFormat df = new SimpleDateFormat(format);
         return df.format(date);
+    }
+
+    /**
+     * 将日期字符串类型，转换为date类型.
+     * @param dateStr
+     * @param format
+     * @return
+     */
+    public static Date parse(String dateStr,String format){
+        SimpleDateFormat df = new SimpleDateFormat(format);
+        try {
+            return df.parse(dateStr);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

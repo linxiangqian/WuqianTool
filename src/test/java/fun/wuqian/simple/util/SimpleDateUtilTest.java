@@ -12,6 +12,11 @@ import java.util.Date;
 public class SimpleDateUtilTest {
 
     @Test
+    public void testParse(){
+        System.out.println(SimpleDateUtil.parse("2023-11-20",SimpleDateUtil.YYYY_MM_DD));
+    }
+
+    @Test
     public void testGetRelativeDate(){
        Date date = SimpleDateUtil.Current.getRelativeDate(7,true);
        String dateStr = SimpleDateUtil.format(date,SimpleDateUtil.YYYY_MM_DD_HH_MM_SS);

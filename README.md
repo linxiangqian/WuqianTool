@@ -2,6 +2,14 @@
 
 -----------------------------
 ## 更新记录
+### v1.2.2
+- 优化工具类的SimpleDateUtil的getRelativeDate()方法。
+- SimpleDateUtil新增parse方法
+
+
+
+-----------------------------
+## 更新记录 - 已部署
 ### v1.2.1
 - 优化工具类的SimpleDateUtil的getRelativeDate()方法。
 
@@ -49,8 +57,4 @@ SimpleUitl新增如下方法：
 ### v1.1.5
 添加方法：isNotNullAndEmpty()、randNumber、md5、md5For32、getExceptionMessage
 
-
-## 部署到仓库指令.
-(1) clean
-(2) deploy
 
