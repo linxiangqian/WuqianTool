@@ -12,6 +12,12 @@ import java.util.Date;
 public class SimpleDateUtilTest {
 
     @Test
+    public void testIsThisDay(){
+        System.out.println(SimpleDateUtil.isThisDay(new Date()));
+        System.out.println( SimpleDateUtil.isThisDay("2023-01-10",SimpleDateUtil.YYYY_MM_DD) );
+    }
+
+    @Test
     public void testParse(){
         System.out.println(SimpleDateUtil.parse("2023-11-20",SimpleDateUtil.YYYY_MM_DD));
     }

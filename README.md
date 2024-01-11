@@ -5,6 +5,8 @@
 ### v1.2.2
 - 优化工具类的SimpleDateUtil的getRelativeDate()方法。
 - SimpleDateUtil新增parse方法
+- SimpleDateUtil新增isThisDay方法。
+- SimpleThreadPool新增获取线程池状态的方法
 
 
 

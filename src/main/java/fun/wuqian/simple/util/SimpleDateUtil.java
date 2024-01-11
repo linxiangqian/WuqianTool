@@ -111,10 +111,9 @@ public class SimpleDateUtil {
         }
     }
 
-
     /**
-     * 返回当前这一天的时间
-     * @return 例子：2023-03-21
+     * 获取今天的日期 例子：2023-03-21
+     * @return 返回的日期格式为：yyyy-MM-dd 例子：2023-03-21
      */
     public static String thisDay() {
         return Current.get(SimpleDateUtil.YYYY_MM_DD);
@@ -176,6 +175,30 @@ public class SimpleDateUtil {
         }
         long date = random(beginDate.getTime(),endDate.getTime());
         return new Date(date);
+    }
+
+    /**
+     * 是否是当天
+     * @param dateStr 日期字符串，格式和format匹配
+     * @param format
+     * @return
+     */
+    public static boolean isThisDay(String dateStr,String format) {
+        return isThisDay(parse(dateStr,format));
+    }
+
+    /**
+     * 是否是当天
+     * @param date
+     * @return
+     */
+    public static boolean isThisDay(Date date) {
+        if (date == null) {
+            return false;
+        }
+        String dateStr = format(date,YYYY_MM_DD);
+        String curDateStr = format(new Date(),YYYY_MM_DD);
+        return dateStr.equals(curDateStr);
     }
 
 
