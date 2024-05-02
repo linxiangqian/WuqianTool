@@ -1,20 +1,28 @@
 # wuqian-tool
 
 -----------------------------
-## 更新记录
+## 更新记录 - 
+### v1.2.4
+- SimpleUtil新增方法elParse
+
+-----------------------------
+## 更新记录 - 已部署
+### v1.2.3
+- 新增id生成器：SimpleIdGenerator、SimpleUUIDGenerator
+
+
+-----------------------------
+## 更新记录 - 已部署
 ### v1.2.2
 - 优化工具类的SimpleDateUtil的getRelativeDate()方法。
 - SimpleDateUtil新增parse方法
 - SimpleDateUtil新增isThisDay方法。
 - SimpleThreadPool新增获取线程池状态的方法
 
-
-
 -----------------------------
 ## 更新记录 - 已部署
 ### v1.2.1
 - 优化工具类的SimpleDateUtil的getRelativeDate()方法。
-
 
 -----------------------------
 ## 更新记录

@@ -107,7 +107,7 @@ public class SimpleDateRangeUtil {
     /**
      * 根据类型来获取.
      * @param type : thisDay、thisWeek、thisMonth,thisYear
-     * @return
+     * @return  type : thisDay、thisWeek、thisMonth,thisYear
      */
     public static List<String> getByType(String type) {
         if(type == null){

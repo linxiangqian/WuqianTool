@@ -98,7 +98,7 @@ public class SimpleThreadPool {
 
     /**
      * 获取executorService
-     * @return
+     * @return executorService
      */
     public  ThreadPoolExecutor getExecutorService() {
         return executorService;
@@ -106,7 +106,7 @@ public class SimpleThreadPool {
 
     /**
      * 获取活动的线程的数量
-     * @return
+     * @return 获取活动的线程的数量
      */
     public long getActiveCount(){
         return executorService.getActiveCount();
@@ -114,7 +114,7 @@ public class SimpleThreadPool {
 
     /**
      * 任务数[包括完成和正在执行的]
-     * @return
+     * @return long 任务数[包括完成和正在执行的]
      */
     public long getTaskCount(){
         return executorService.getTaskCount();

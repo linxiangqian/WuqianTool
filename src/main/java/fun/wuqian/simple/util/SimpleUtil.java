@@ -6,8 +6,10 @@ import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
 
 /**
  * 常用的工具类
@@ -54,7 +56,7 @@ public class SimpleUtil {
 
     /**
      * 当其中有字段不为null或者空的情况下，就会返回true
-     * @param objs
+     * @param objs objects
      * @return 当有一个字段不为null或者空的情况下，就会返回true.
      */
     public static boolean isNotNullAndEmptyAnyRtn(Object... objs) {
@@ -70,6 +72,9 @@ public class SimpleUtil {
 
     /**
      * 是否包等于某些数据，包含返回true.
+     * @param  source object
+     * @param targets 待比较的数据
+     * @return  true-包含了，false-全部未包含
      */
     public static  boolean isEqualsOr(String source, String... targets) {
         boolean b = false;
@@ -129,9 +134,8 @@ public class SimpleUtil {
 
     /**
      * md5加密，32位加密方式.
-     *
      * @param str 字符串
-     * @return
+     * @return md5之后的字符串
      */
     public static String md5(String str) {
         return md5For32(str);
@@ -174,7 +178,7 @@ public class SimpleUtil {
 
     /**
      * 休眠几秒.
-     * @param timeoutSecond
+     * @param timeoutSecond 秒时间
      */
     public static void sleep(long timeoutSecond) {
         try {
@@ -202,7 +206,7 @@ public class SimpleUtil {
     /**
      * 根据生日计算年龄.计算出来的是周岁
      * @param birthday 生日,支持yyyyMMdd、yyyy-MM-dd，yyyy/MM/dd,yyyy.MM.dd
-     * @return
+     * @return 年龄
      */
     public static int birthday2Age(String birthday) {
         birthday = birthday.replaceAll("-","").replace("/","").replace(".","");
@@ -212,10 +216,9 @@ public class SimpleUtil {
     /**
      * 根据生日计算年龄.计算出来的是周岁
      *
-     * @param birthday:格式为
-     *            年-月-日，例如:2013-09-06
+     * @param birthday 格式为 年-月-日，例如:2013-09-06
+     * @param format 格式化格式
      * @return 年龄
-     *
      */
     public static int birthday2Age(String birthday,String format) {
         if (birthday == null) {
@@ -249,4 +252,24 @@ public class SimpleUtil {
             return (int) (day / 365f);
         }
     }
+
+    /**
+     * 解析el表达式： String str = "你好${name},年龄${age}";
+     *
+     * @param elString
+     * @param map
+     * @return
+     */
+    public static String elParse(String elString, Map<String, Object> map) {
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            //System.out.println(entry.getKey() +"--"+entry.getValue() );
+            /*
+            确实，在使用replaceAll()方法时，如果替换字符串中包含正则表达式的特殊字符，会导致替换失败或报错。为了避免这种情况，可以使用Matcher.quoteReplacement()方法来转义要替换的字符串。
+             */
+            //elString = elString.replaceAll("\\$\\{" + entry.getKey() + "\\}", entry.getValue() + "");
+            elString = elString.replaceAll("\\$\\{" + entry.getKey() + "\\}", Matcher.quoteReplacement(entry.getValue().toString()));
+        }
+        return elString;
+    }
+
 }

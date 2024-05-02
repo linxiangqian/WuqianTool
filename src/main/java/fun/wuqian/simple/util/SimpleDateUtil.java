@@ -27,7 +27,7 @@ public class SimpleDateUtil {
 
         /**
          * 当前日期和时间.
-         * @return
+         * @return yyyy-MM-dd HH:mm:ss的日期格式
          */
         public static String get_yMdHms() {
             return get(SimpleDateUtil.YYYY_MM_DD_HH_MM_SS);
@@ -47,7 +47,7 @@ public class SimpleDateUtil {
         /**
          * 基于当前的时间，获取相对的日期，
          * @param secondPlusOrMinus 如果是正数的话，就是之后的时间，如果是负数的话，那么就是之前的时间
-         * @return
+         * @return getRelativeDate
          */
         public  static Date getRelativeDate(int secondPlusOrMinus){
             return getRelativeDate(0,secondPlusOrMinus);
@@ -57,7 +57,7 @@ public class SimpleDateUtil {
          * 基于当前的时间，获取相对的日期
          * @param dayPlusOrMinus 如果是正数的话，就是之后的时间，如果是负数的话，那么就是之前的时间
          * @param secondPlusOrMinus 如果是正数的话，就是之后的时间，如果是负数的话，那么就是之前的时间
-         * @return
+         * @return getRelativeDate
          */
         public  static  Date getRelativeDate(int dayPlusOrMinus,int secondPlusOrMinus){
             return getRelativeDate(0,0,dayPlusOrMinus,0,0,secondPlusOrMinus,false);
@@ -67,7 +67,7 @@ public class SimpleDateUtil {
          * 基于当前的时间，获取相对的日期
          * @param dayPlusOrMinus 如果是正数的话，就是之后的时间，如果是负数的话，那么就是之前的时间
          * @param isCurrentEndDay 是否是当天结束时间，也就是设置为23:59:59
-         * @return
+         * @return 日期
          */
         public  static  Date getRelativeDate(int dayPlusOrMinus,boolean isCurrentEndDay){
             return getRelativeDate(0,0,dayPlusOrMinus,0,0,0,isCurrentEndDay);
@@ -82,7 +82,7 @@ public class SimpleDateUtil {
          * @param minutePlusOrMinus  把日期往后增加minute小时.整数往后推,负数往前移动
          * @param secondPlusOrMinus 把日期往后增加SECOND 秒.整数往后推,负数往前移动
          * @param isCurrentEndDay 是否是当天结束时间，也就是设置为23:59:59
-         * @return
+         * @return 日期
          */
         public  static  Date getRelativeDate(int yearPlusOrMinus,int monthPlusOrMinus,int dayPlusOrMinus,int hourPlusOrMinus,int minutePlusOrMinus,int secondPlusOrMinus,boolean isCurrentEndDay){
             // SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -121,7 +121,7 @@ public class SimpleDateUtil {
 
     /**
      * 获取一年中的第几周
-     * @return
+     * @return 一年中的第几周
      */
     public static int weekOfYear(){
         return weekOfYear(new Date());
@@ -129,7 +129,7 @@ public class SimpleDateUtil {
 
     /**
      * 获取一年中的第几周
-     * @return
+     * @return 获取一年中的第几周
      */
     public static int weekOfYear(Date date){
         Calendar calendar = Calendar.getInstance();//创建一个日期实例
@@ -139,9 +139,9 @@ public class SimpleDateUtil {
 
     /**
      * 日期格式化.
-     * @param date
-     * @param format
-     * @return
+     * @param date date
+     * @param format format
+     * @return 日期格式化的时间
      */
     public static String format(Date date,String format){
         SimpleDateFormat df = new SimpleDateFormat(format);
@@ -150,9 +150,9 @@ public class SimpleDateUtil {
 
     /**
      * 将日期字符串类型，转换为date类型.
-     * @param dateStr
-     * @param format
-     * @return
+     * @param dateStr dateStr
+     * @param format format
+     * @return 转换后的date类型
      */
     public static Date parse(String dateStr,String format){
         SimpleDateFormat df = new SimpleDateFormat(format);
@@ -165,9 +165,9 @@ public class SimpleDateUtil {
 
     /**
      * 根据开始时间和结束时间，生成一个随机时间.
-     * @param beginDate
-     * @param endDate
-     * @return
+     * @param beginDate 开始时间
+     * @param endDate 结束时间
+     * @return 生成的随机时间
      */
     public static Date randomDate(Date beginDate, Date endDate ){
         if(beginDate.getTime() >= endDate.getTime()){
@@ -180,8 +180,8 @@ public class SimpleDateUtil {
     /**
      * 是否是当天
      * @param dateStr 日期字符串，格式和format匹配
-     * @param format
-     * @return
+     * @param format 日期格式
+     * @return true-当天，false-不是
      */
     public static boolean isThisDay(String dateStr,String format) {
         return isThisDay(parse(dateStr,format));
@@ -189,8 +189,8 @@ public class SimpleDateUtil {
 
     /**
      * 是否是当天
-     * @param date
-     * @return
+     * @param date 日期
+     * @return  true-当天，false-不是
      */
     public static boolean isThisDay(Date date) {
         if (date == null) {
@@ -208,7 +208,7 @@ public class SimpleDateUtil {
      * 生成随机数.
      * @param begin
      * @param end
-     * @return
+     * @return 随机数
      */
     private static long random(long begin,long end){
         long rtn = begin + (long)(Math.random() * (end - begin));
