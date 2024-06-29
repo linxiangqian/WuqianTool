@@ -12,6 +12,14 @@ import org.junit.Test;
 public class SimpleUtilTest {
 
     @Test
+    public void testIsContainer(){
+        Assert.assertEquals(true,SimpleUtil.isContains("http://suno4.cn","suno4.cn","noisee.com.cn")  );
+        Assert.assertEquals(true,SimpleUtil.isContains("http://noisee.com.cn","suno4.cn","noisee.com.cn")  );
+        Assert.assertEquals(false,SimpleUtil.isContains("http://ai.dzwlai.com","suno4.cn","noisee.com.cn")  );
+
+    }
+
+    @Test
     public void testBirthday2Age(){
         int age1 = SimpleUtil.birthday2Age("1988-11-29");
         int age2 = SimpleUtil.birthday2Age("1988/11/29");

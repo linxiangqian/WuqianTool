@@ -90,6 +90,23 @@ public class SimpleUtil {
     }
 
     /**
+     * 是否包含某数据，包含返回true.
+     * @param source 比对数据源
+     * @param targets 比对的数据信息。
+     * @return true:包含；false：未包含
+     */
+    public static boolean isContains(String source, String... targets) {
+        boolean b = false;
+        for (String str : targets) {
+            if (source.contains(str)) {
+                b = true;
+                break;
+            }
+        }
+        return b;
+    }
+
+    /**
      * 获取随机数[包括开始，包括结束.]. [startNumber,endNumber]
      *
      * @param startNumber  开始

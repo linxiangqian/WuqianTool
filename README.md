@@ -1,9 +1,12 @@
 # wuqian-tool
 
 -----------------------------
-## 更新记录 - 
+## 更新记录 - 已部署
 ### v1.2.4
 - SimpleUtil新增方法elParse
+- SimpleUtil新增方法isContainer方法
+- SimpleHttpHelper新增isRemoteFileExists
+- SimpleHttpHelper新增checkRemoteFileEmpty
 
 -----------------------------
 ## 更新记录 - 已部署
