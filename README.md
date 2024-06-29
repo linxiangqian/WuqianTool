@@ -7,6 +7,7 @@
 - SimpleUtil新增方法isContainer方法
 - SimpleHttpHelper新增isRemoteFileExists
 - SimpleHttpHelper新增checkRemoteFileEmpty
+- SimpleHttpHelper新增getRedirectionLocation
 
 -----------------------------
 ## 更新记录 - 已部署

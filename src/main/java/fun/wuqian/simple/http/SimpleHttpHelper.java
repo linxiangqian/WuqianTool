@@ -60,4 +60,44 @@ public class SimpleHttpHelper {
         return flag;
     }
 
+    public static String getRedirectionLocation(String urlString) {
+        String newUrlString = null;
+        HttpURLConnection connection = null;
+        try {
+            URL url = new URL(urlString);
+            connection = (HttpURLConnection) url.openConnection();
+
+            // 设置是否自动处理重定向 false:禁止自动重定向.
+            connection.setInstanceFollowRedirects(false);
+            // 发送GET请求
+            connection.setRequestMethod("GET");
+            connection.connect();
+
+            // 获取响应码
+            int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                //System.out.println("No redirection occurred.");
+            } else if (responseCode == HttpURLConnection.HTTP_MOVED_PERM ||
+                    responseCode == HttpURLConnection.HTTP_MOVED_TEMP ||
+                    responseCode == HttpURLConnection.HTTP_SEE_OTHER ||
+                    responseCode == 307) {
+                // 如果发生了重定向，获取新的Location
+                newUrlString = connection.getHeaderField("Location");
+                //System.out.println("Redirection occurred. New URL: " + newUrlString);
+            } else {
+                //System.out.println("Request failed with response code: " + responseCode);
+            }
+            //String location = connection.getHeaderField("Location");
+            //System.out.println("location: "+location);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            connection.disconnect();
+        }
+        if(newUrlString == null){
+            newUrlString = urlString;
+        }
+        return newUrlString;
+    }
+
 }
