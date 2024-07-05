@@ -10,7 +10,14 @@ import java.net.URL;
  */
 public class SimpleHttpHelper {
 
+    /**
+     * 远程文件是否存在
+     * @param fileUrl
+     * @return true-存在，false-不存在。
+     */
     public static boolean isRemoteFileExists(String fileUrl) {
+        if(fileUrl == null) return false;
+
         try {
             URL url = new URL(fileUrl);
             HttpURLConnection.setFollowRedirects(false);
@@ -34,6 +41,8 @@ public class SimpleHttpHelper {
      * @return true:0字节；false：存在并且不是0字节.
      */
     public static boolean checkRemoteFileEmpty(String fileUrl){
+        if(fileUrl == null) return true;
+
         boolean flag = true;
         try {
             URL url = new URL(fileUrl);
@@ -61,6 +70,8 @@ public class SimpleHttpHelper {
     }
 
     public static String getRedirectionLocation(String urlString) {
+        if(urlString == null) return null;
+
         String newUrlString = null;
         HttpURLConnection connection = null;
         try {

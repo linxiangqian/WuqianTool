@@ -1,6 +1,13 @@
 # wuqian-tool
 
 -----------------------------
+## 更新记录
+### v1.2.5
+- SimpleHttpHelper新增isRemoteFileExists null直接返回
+- SimpleHttpHelper新增checkRemoteFileEmpty null直接返回
+- SimpleHttpHelper新增getRedirectionLocation null直接返回
+
+-----------------------------
 ## 更新记录 - 已部署
 ### v1.2.4
 - SimpleUtil新增方法elParse
