@@ -289,4 +289,35 @@ public class SimpleUtil {
         return elString;
     }
 
+    /**
+     * ifNullOrEmpty("","添加","修改")="修改";
+     *
+     * @param field
+     * @param nullOrEmptyValue
+     * @param elseValue
+     * @return
+     */
+    public static Object ifNullOrEmpty(Object field, Object nullOrEmptyValue, Object elseValue) {
+        Object tmp = elseValue;
+        if (isNullOrEmpty(field)) {
+            tmp = nullOrEmptyValue;
+        }
+        return tmp;
+    }
+
+    /**
+     * ifNullOrEmpty("你好","")="你好";
+     *
+     * @param field
+     * @param nullOrEmptyValue
+     * @return
+     */
+    public static Object ifNullOrEmpty(Object field, Object nullOrEmptyValue) {
+        Object tmp = field;
+        if (isNullOrEmpty(field)) {
+            tmp = nullOrEmptyValue;
+        }
+        return tmp;
+    }
+
 }

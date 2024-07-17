@@ -6,6 +6,9 @@
 - SimpleHttpHelper新增isRemoteFileExists null直接返回
 - SimpleHttpHelper新增checkRemoteFileEmpty null直接返回
 - SimpleHttpHelper新增getRedirectionLocation null直接返回
+- SimpleHttpHelper新增ifNullOrEmpty
+
+ifNullOrEmpty
 
 -----------------------------
 ## 更新记录 - 已部署
