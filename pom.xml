@@ -8,7 +8,7 @@
     <artifactId>wuqian-tool</artifactId>
     <name>wuqian-tool</name>
     <!-- 1.1.1-SNAPSHOT -->
-    <version>1.2.4</version>
+    <version>1.2.5</version>
 
     <description>java常用的工具类(悟纤提供)</description>
     <url>https://github.com/linxiangqian/WuqianTool</url>

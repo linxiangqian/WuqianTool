@@ -97,10 +97,12 @@ public class SimpleUtil {
      */
     public static boolean isContains(String source, String... targets) {
         boolean b = false;
-        for (String str : targets) {
-            if (source.contains(str)) {
-                b = true;
-                break;
+        if(source != null){
+            for (String str : targets) {
+                if (source.contains(str)) {
+                    b = true;
+                    break;
+                }
             }
         }
         return b;
@@ -197,14 +199,17 @@ public class SimpleUtil {
      * 休眠几秒.
      * @param timeoutSecond 秒时间
      */
-    public static void sleep(long timeoutSecond) {
+    public static void sleepSecond(long timeoutSecond) {
+        sleep(timeoutSecond,TimeUnit.SECONDS);
+    }
+
+    public static void sleep(long time,TimeUnit timeUnit) {
         try {
-            TimeUnit.SECONDS.sleep(timeoutSecond);
+            timeUnit.sleep(time);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
-
 
     /**
      * 获取详细的异常信息.
@@ -238,9 +243,7 @@ public class SimpleUtil {
      * @return 年龄
      */
     public static int birthday2Age(String birthday,String format) {
-        if (birthday == null) {
-            return 0;
-        } else {
+        if (birthday != null) {
             SimpleDateFormat myFormatter = new SimpleDateFormat(format);
             Date mydate = null;
             try {
@@ -249,8 +252,8 @@ public class SimpleUtil {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            return 0;
         }
+        return 0;
     }
 
     /**
@@ -278,6 +281,9 @@ public class SimpleUtil {
      * @return
      */
     public static String elParse(String elString, Map<String, Object> map) {
+        if(elString == null){
+            return null;
+        }
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             //System.out.println(entry.getKey() +"--"+entry.getValue() );
             /*

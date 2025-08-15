@@ -7,8 +7,9 @@
 - SimpleHttpHelper新增checkRemoteFileEmpty null直接返回
 - SimpleHttpHelper新增getRedirectionLocation null直接返回
 - SimpleHttpHelper新增ifNullOrEmpty
+- SimpleUtil的isContainer 加入非空的判断.
+- SimpleUtil的sleep修改为两个参数，依赖TimeUnit，以及原先的sleep方法修改为sleepSecond()
 
-ifNullOrEmpty
 
 -----------------------------
 ## 更新记录 - 已部署
@@ -18,6 +19,7 @@ ifNullOrEmpty
 - SimpleHttpHelper新增isRemoteFileExists
 - SimpleHttpHelper新增checkRemoteFileEmpty
 - SimpleHttpHelper新增getRedirectionLocation
+
 
 -----------------------------
 ## 更新记录 - 已部署
