@@ -51,15 +51,15 @@
 
             <build>
                 <plugins>
+                    <!-- https://central.sonatype.org/ -->
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.7</version>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.4.0</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <publishingServerId>central.sonatype</publishingServerId>
+                            <tokenAuth>true</tokenAuth>
                         </configuration>
                     </plugin>
                     <!-- 要生成 Javadoc 和 Source jar 文件，您必须配置 Javadoc 和 source Maven 插件。 -->
