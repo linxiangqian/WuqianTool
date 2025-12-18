@@ -290,7 +290,9 @@ public class SimpleUtil {
             确实，在使用replaceAll()方法时，如果替换字符串中包含正则表达式的特殊字符，会导致替换失败或报错。为了避免这种情况，可以使用Matcher.quoteReplacement()方法来转义要替换的字符串。
              */
             //elString = elString.replaceAll("\\$\\{" + entry.getKey() + "\\}", entry.getValue() + "");
-            elString = elString.replaceAll("\\$\\{" + entry.getKey() + "\\}", Matcher.quoteReplacement(entry.getValue().toString()));
+            Object value = entry.getValue();
+            String replacement = (value == null) ? "" : value.toString();
+            elString = elString.replaceAll("\\$\\{" + entry.getKey() + "\\}", Matcher.quoteReplacement(replacement));
         }
         return elString;
     }

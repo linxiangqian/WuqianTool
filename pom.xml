@@ -8,7 +8,7 @@
     <artifactId>wuqian-tool</artifactId>
     <name>wuqian-tool</name>
     <!-- 1.1.1-SNAPSHOT -->
-    <version>1.2.5</version>
+    <version>1.2.6</version>
 
     <description>java常用的工具类(悟纤提供)</description>
     <url>https://github.com/linxiangqian/WuqianTool</url>
@@ -51,7 +51,11 @@
 
             <build>
                 <plugins>
-                    <!-- https://central.sonatype.org/ -->
+                    <!-- MF:2025.12.18:主要使用这个了
+                    使用 Maven 插件发布文档：https://central.sonatype.org/publish/publish-portal-maven/
+
+                     https://central.sonatype.org/
+                     -->
                     <plugin>
                         <groupId>org.sonatype.central</groupId>
                         <artifactId>central-publishing-maven-plugin</artifactId>
@@ -60,6 +64,7 @@
                         <configuration>
                             <publishingServerId>central.sonatype</publishingServerId>
                             <tokenAuth>true</tokenAuth>
+                            <autoPublish>true</autoPublish>
                         </configuration>
                     </plugin>
                     <!-- 要生成 Javadoc 和 Source jar 文件，您必须配置 Javadoc 和 source Maven 插件。 -->
@@ -93,7 +98,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
+                        <version>3.2.8</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -104,25 +109,11 @@
                             </execution>
                         </executions>
                     </plugin>
+
+
+
                 </plugins>
             </build>
-            <!-- 参考： https://central.sonatype.org/publish/publish-maven/#distribution-management-and-authentication
-        部署命令：如果您的版本是发布版本（不以 -SNAPSHOT 结尾）并且设置到位，您可以运行到 OSSRH 的部署和到中央存储库的自动发布
-        （1）mvn clean deploy
-        (2) mvn clean deploy -P release
-    -->
-            <distributionManagement>
-                <snapshotRepository>
-                    <!--注意,此id必须与setting.xml中指定的一致-->
-                    <id>ossrh</id>
-                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
-
         </profile>
     </profiles>
 
