@@ -201,6 +201,30 @@ public class SimpleDateUtil {
         return dateStr.equals(curDateStr);
     }
 
+    /**
+     * 计算两个时间点之间的时间差（秒）
+     *
+     * <p>以毫秒时间戳作为输入，计算它们之间的绝对时间差，
+     * 并将结果从毫秒转换为秒（向下取整）。</p>
+     *
+     * <p>注意：
+     * <ul>
+     *   <li>当任一参数为 {@code null} 时，返回 0</li>
+     *   <li>不区分时间先后顺序，始终返回非负值</li>
+     *   <li>毫秒到秒的转换采用向下取整方式</li>
+     * </ul>
+     * </p>
+     *
+     * @param startTimeMs 开始时间，单位：毫秒（ms）
+     * @param endTimeMs   结束时间，单位：毫秒（ms）
+     * @return 两个时间点之间的时间差，单位：秒（s）
+     */
+    public static long diffSeconds(Long startTimeMs, Long endTimeMs) {
+        if (startTimeMs == null || endTimeMs == null) {
+            return 0;
+        }
+        return Math.abs(endTimeMs - startTimeMs) / 1000;
+    }
 
     /////////私有方法
 
