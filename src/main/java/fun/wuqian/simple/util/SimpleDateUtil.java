@@ -220,6 +220,22 @@ public class SimpleDateUtil {
         return Math.abs(endTimeMs - startTimeMs) / 1000;
     }
 
+    /**
+     * 计算两个时间点之间的时间差（秒）
+     * 以毫秒时间戳作为输入，计算它们之间的绝对时间差，
+     * 并将结果从毫秒转换为秒（向下取整）。
+     *注意：
+     *   当任一参数为 {@code null} 时，返回 0
+     *   不区分时间先后顺序，始终返回非负值
+     *   毫秒到秒的转换采用向下取整方式
+     * @param startTime 开始时间
+     * @param endTime   结束时间
+     * @return 两个时间点之间的时间差，单位：秒（s）
+     */
+    public static long diffSeconds(Date startTime, Date endTime) {
+        return diffSeconds(startTime.getTime(), endTime.getTime());
+    }
+
     /////////私有方法
 
     /**
