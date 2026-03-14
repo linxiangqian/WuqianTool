@@ -2,13 +2,14 @@
 
 
 -----------------------------
-## 更新记录
+## 更新记录 - 已部署
 ### v1.2.7
 - SimpleDateUtil新增diffSeconds() - 支持date类型传入；
+- SimpleDateUtil新增diffSeconds() - 支持date单独传入，简化使用.
 
 
 -----------------------------
-## 更新记录
+## 更新记录 - 已部署
 ### v1.2.5
 - SimpleHttpHelper新增isRemoteFileExists null直接返回
 - SimpleHttpHelper新增checkRemoteFileEmpty null直接返回
