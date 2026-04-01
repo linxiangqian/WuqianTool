@@ -1,7 +1,9 @@
 package fun.wuqian.simple.thread;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * TODO
@@ -21,11 +23,27 @@ public class SimpleThreadPool {
     }
     private void initExecutorService(){
         DefaultThreadFactory factoryBuilder  = new DefaultThreadFactory("Simple");
-        //获取的是逻辑核数，比如：物理核数是6，逻辑核数是12，那么这里的值就是12.
-        int availableProcessors = Runtime.getRuntime().availableProcessors();
-        //理论值是25，这里设置小一点.
-        THREAD_COUNT = availableProcessors*THREAD_COUNT;
-        executorService = (ThreadPoolExecutor) Executors.newFixedThreadPool(THREAD_COUNT,factoryBuilder);
+//        //获取的是逻辑核数，比如：物理核数是6，逻辑核数是12，那么这里的值就是12.
+//        int availableProcessors = Runtime.getRuntime().availableProcessors();
+//        //理论值是25，这里设置小一点.
+//        THREAD_COUNT = availableProcessors*THREAD_COUNT;
+//        executorService = (ThreadPoolExecutor) Executors.newFixedThreadPool(THREAD_COUNT,factoryBuilder);
+
+        int cpu = Runtime.getRuntime().availableProcessors();
+
+        int corePoolSize = cpu * 2;        // 核心线程
+        int maxPoolSize = cpu * 4;         // 最大线程
+        int queueCapacity = cpu*THREAD_COUNT;           // 队列大小（关键）
+
+        executorService = new ThreadPoolExecutor(
+                corePoolSize,
+                maxPoolSize,
+                60L,
+                TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(queueCapacity), // ✅ 有界队列
+                factoryBuilder,
+                new ThreadPoolExecutor.AbortPolicy() // ❗ 拒绝策略（重要）
+        );
     }
 
     public static SimpleThreadPool getInstance(){
